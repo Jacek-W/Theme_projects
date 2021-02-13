@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+class Solution {
+    public Solution(){  
+    }
+    public void Book(){
+        int n = Convert.ToInt32(Console.ReadLine());
+        var phoneBook = new Dictionary<string, int>();
+        string[] manykeys = new string[n];
+        for(int i = 0; i < n; i++){
+            var together = Console.ReadLine();
+            var splitThem = together.Split(' ');
+            string key = splitThem[0];
+            int value = Convert.ToInt32(splitThem[1]);
+            phoneBook.Add(key, value);
+            manykeys[i] = key;
+        }
+        //phoneBook.Select(i => $"{i.Key} {i.Value}").ToList().ForEach(Console.WriteLine)
+        foreach (KeyValuePair<string, int> variable_kvp in phoneBook){
+            string checkin = Console.ReadLine();
+            if (Array.Exists(manykeys, element => element == checkin)){
+                Console.WriteLine("{0}={1}", checkin, phoneBook[checkin]);
+            }else{
+                Console.WriteLine("Not found");
+            }
+
+        }
+        
+    }
+    
+    static void Main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
+        Solution sol = new Solution();
+        sol.Book();
+    }
+}
